@@ -1,0 +1,26 @@
+{
+  "jsc": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "baseUrl": ".",
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true,
+    },
+    "target": "es2022",
+    "keepClassNames": true,
+    "loose": true
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "sourceMaps": true,
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

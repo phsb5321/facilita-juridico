@@ -1,0 +1,239 @@
+{
+	"basePath": "/",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"IClient": {
+			"properties": {
+				"id_client": {
+					"type": "number",
+					"format": "double",
+					"x-nullable": true
+				},
+				"name": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"coordinate_x": {
+					"type": "number",
+					"format": "double"
+				},
+				"coordinate_y": {
+					"type": "number",
+					"format": "double"
+				},
+				"created_at": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"updated_at": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			"required": [
+				"name",
+				"email",
+				"phone",
+				"coordinate_x",
+				"coordinate_y"
+			],
+			"type": "object",
+			"additionalProperties": true
+		}
+	},
+	"info": {
+		"title": "ts-express-swc",
+		"version": "0.0.0",
+		"contact": {}
+	},
+	"paths": {
+		"/clients": {
+			"post": {
+				"operationId": "CreateClient",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"201": {
+						"description": "Created",
+						"schema": {
+							"$ref": "#/definitions/IClient"
+						}
+					}
+				},
+				"consumes": [
+					"application/json"
+				],
+				"tags": [
+					"Clients"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "client",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/IClient"
+						}
+					}
+				]
+			},
+			"get": {
+				"operationId": "GetClients",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"items": {
+								"$ref": "#/definitions/IClient"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"tags": [
+					"Clients"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/clients/search": {
+			"get": {
+				"operationId": "SearchClients",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"properties": {
+								"limit": {
+									"type": "number",
+									"format": "double"
+								},
+								"page": {
+									"type": "number",
+									"format": "double"
+								},
+								"total": {
+									"type": "number",
+									"format": "double"
+								},
+								"clients": {
+									"items": {
+										"$ref": "#/definitions/IClient"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"limit",
+								"page",
+								"total",
+								"clients"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Clients"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "search",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"default": 1,
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					},
+					{
+						"default": 10,
+						"in": "query",
+						"name": "limit",
+						"required": false,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/clients/{id_client}": {
+			"delete": {
+				"operationId": "DeleteClient",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Clients"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id_client",
+						"required": true,
+						"format": "double",
+						"type": "number"
+					}
+				]
+			}
+		},
+		"/clients/shortest-route": {
+			"get": {
+				"operationId": "GetShortestRoute",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "The shortest route as an array of IClient.",
+						"schema": {
+							"items": {
+								"$ref": "#/definitions/IClient"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Retrieves the shortest route. Caches the result to improve performance.",
+				"tags": [
+					"Clients"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {}
+}

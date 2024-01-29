@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/routes/*", "src/swagger/*"],
+  "exec": "npm run tsoa && node --inspect -r @swc/register src/bin/www.ts"
+}

@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "types": [
+      "vitest/globals"
+    ],
+    "target": "es2022",
+    "lib": [
+      "es2022"
+    ],
+    "strict": true,
+    "module": "ESNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnreachableCode": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".", // This must be set if `paths` is set.
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests"
+  ],
+}

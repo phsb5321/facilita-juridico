@@ -1,0 +1,17 @@
+{
+  "entryFile": "./src/app.ts",
+  "controllerPathGlobs": ["./src/controllers/*Controller.ts"],
+  "spec": {
+    "outputDirectory": "./src/swagger",
+    "entryFile": "./app.ts"
+  },
+  "routes": {
+    "routesDir": "./src/routes"
+  },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
